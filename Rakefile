@@ -39,7 +39,11 @@ RSpec::Core::RakeTask.new(:rcov) do |spec|
   spec.rcov = true
 end
 
-task :default => :spec
+
+desc "Default builds and tests bio-affy"
+task :default => [:build, :test]
+
+task :test => :spec
 
 # require 'rdoc/task'
 # Rake::RDocTask.new do |rdoc|

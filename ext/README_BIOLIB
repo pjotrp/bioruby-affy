@@ -1,0 +1,36 @@
+This is a port of the Ben Bolstad's Affyio R/Bioconductor package to BIOLIB
+(http://biolib.open-bio.org/)
+
+Affyio allows raw access to Affymetrix microarray .CEL and .CDF files. This means
+you can access the PM and MM signal for single probes, and you can get the 
+information to combine probes into probesets.
+
+The BioLib mapping is in the file ./src/biolib_affyio.c and see the online API
+documentation at http://biolib.open-bio.org/ for more information.
+
+One interface is provided. It maintains state through a handle.
+
+Notes:
+
+* while Affyio makes limited use of R libraries this first port requires Rlib to
+  be available (this may change later)
+* the current implementation retains a lot of unused Affy information in 
+  memory - there is a case to be made to have two versions: One minimalistic - 
+  giving the usual probe info and one full giving all Affy info
+* the C library is not particularly safe on index ranges - i.e. you have
+  to be careful not to go out of bounds
+
+Modifications on the R source are:
+
+- Introducing biolib_affyio.h and biolib_affyio.c in ./src
+- Added ./test folder with sample CEL file(s)
+- Moved CEL definition into header file read_abatch.h
+- Moved CDF definition into header file read_cdf.h
+- Some previously static functions exported in read_cdf.h
+- stdint.h is default
+
+See http://biolib.open-bio.org/
+
+Pjotr Prins
+
+
