@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'bundler'
-require 'rake/clean'
+require 'psych'
 
 begin
   Bundler.setup(:default, :development)
@@ -12,6 +12,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
+require 'rake/clean'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
