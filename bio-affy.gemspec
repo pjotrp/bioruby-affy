@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/biobio-affy",
+    "bio-affy-0.1.0.gem",
     "bio-affy.gemspec",
     "ext/DESCRIPTION",
     "ext/HISTORY",
@@ -87,14 +88,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.1.rc"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<ffi>, [">= 1.0.11"])
       s.add_development_dependency(%q<mkrf>, [">= 0.2.3"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_dependency(%q<bundler>, ["~> 1.1.rc"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<ffi>, [">= 1.0.11"])
@@ -102,7 +103,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+    s.add_dependency(%q<bundler>, ["~> 1.1.rc"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<ffi>, [">= 1.0.11"])

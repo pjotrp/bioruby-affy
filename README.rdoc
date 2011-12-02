@@ -5,7 +5,24 @@ Affymetrix microarray file format parser (CEL/CDF) for Ruby.
 == Introduction
 
 This is a port of the Biolib-1.0 Affy parser for the Ruby FFI, which
-in turn was an adaption of Ben Bolstad's work in R. 
+in turn, is an adaptation of Ben Bolstad's work for R. 
+
+To use this tool you do not need to know Ruby.
+
+== Install
+
+Requirements: to install this software you need an installation of R and Ruby 1.9, e.g on Debian
+
+  apt-get install r-base-core ruby1.9
+
+After installing ruby 1.9, you can use rubygems
+
+  gem install bio-affy
+
+Next run the tool with
+
+  bio-affy --help
+
 
 == Copyright
 

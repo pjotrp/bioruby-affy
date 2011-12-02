@@ -41,12 +41,23 @@ RSpec::Core::RakeTask.new(:rcov) do |spec|
   spec.rcov = true
 end
 
+file "lib/libbio-affy.so" => Dir.glob("ext/src/*{.rb,.c}") do
+   Dir.chdir("ext/src") do
+     # this does essentially the same thing
+     # as what rubygems does
+     # ruby "extconf.rb"
+     # sh "make"
+     ruby "mkrf_conf.rb"
+     sh "rake"
+  end
+  cp "ext/src/libbio-affy.so", "lib/libbio-affy.so"
+end
 
 desc "Default builds and tests bio-affy"
 task :default => [:build, :test]
 
 desc "Build extension"
-task :build => [ ] do 
+task :build => [ "lib/libbio-affy.so" ] do 
 end
 
 task :test => :spec

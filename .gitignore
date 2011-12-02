@@ -1,3 +1,6 @@
+ext/src/Rakefile
+*.gem
+
 # rcov generated
 coverage
 
