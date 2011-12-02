@@ -5,9 +5,9 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bio-affy}
-  s.version = "0.1.0"
+  s.version = "0.1.0.alpha.1"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pjotr Prins"]
   s.date = %q{2011-12-02}
   s.default_executable = %q{biobio-affy}
@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/biobio-affy",
-    "bio-affy-0.1.0.gem",
     "bio-affy.gemspec",
     "ext/DESCRIPTION",
     "ext/HISTORY",
@@ -53,25 +52,39 @@ Gem::Specification.new do |s|
     "ext/src/CMakeLists.txt",
     "ext/src/Makevars.in",
     "ext/src/Makevars.win",
+    "ext/src/Rakefile",
     "ext/src/biolib_affyio.c",
     "ext/src/biolib_affyio.h",
+    "ext/src/biolib_affyio.o",
     "ext/src/fread_functions.c",
     "ext/src/fread_functions.h",
+    "ext/src/fread_functions.o",
+    "ext/src/libbio-affy.so",
+    "ext/src/mkrf.log",
     "ext/src/mkrf_conf.rb",
     "ext/src/read_abatch.c",
     "ext/src/read_abatch.h",
+    "ext/src/read_abatch.o",
     "ext/src/read_bpmap.c",
+    "ext/src/read_bpmap.o",
     "ext/src/read_cdf.h",
     "ext/src/read_cdf_xda.c",
+    "ext/src/read_cdf_xda.o",
     "ext/src/read_cdffile2.c",
+    "ext/src/read_cdffile2.o",
     "ext/src/read_celfile_generic.c",
     "ext/src/read_celfile_generic.h",
+    "ext/src/read_celfile_generic.o",
     "ext/src/read_clf.c",
+    "ext/src/read_clf.o",
     "ext/src/read_generic.c",
     "ext/src/read_generic.h",
+    "ext/src/read_generic.o",
     "ext/src/read_pgf.c",
+    "ext/src/read_pgf.o",
     "ext/src/tags",
     "lib/bio-affy.rb",
+    "lib/libbio-affy.so",
     "spec/bio-affy_spec.rb",
     "spec/spec_helper.rb"
   ]

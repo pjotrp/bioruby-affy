@@ -43,10 +43,6 @@ end
 
 file "lib/libbio-affy.so" => Dir.glob("ext/src/*{.rb,.c}") do
    Dir.chdir("ext/src") do
-     # this does essentially the same thing
-     # as what rubygems does
-     # ruby "extconf.rb"
-     # sh "make"
      ruby "mkrf_conf.rb"
      sh "rake"
   end
