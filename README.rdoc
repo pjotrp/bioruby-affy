@@ -1,5 +1,7 @@
 = bio-affy
 
+WARNING: This software is currently being developed! It may not be usable.
+
 Affymetrix microarray file format parser (CEL/CDF) for Ruby.
 
 == Introduction
@@ -22,7 +24,6 @@ After installing ruby 1.9, you can use rubygems
 Next run the tool with
 
   bio-affy --help
-
 
 == Copyright
 
