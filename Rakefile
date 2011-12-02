@@ -22,8 +22,10 @@ Jeweler::Tasks.new do |gem|
   (CEL/CDF) for Ruby. FFI binding to Biolib port of R/Affyio by Benjamin Milo Bolstad}
   gem.email = "pjotr.public01@thebird.nl"
   gem.authors = ["Pjotr Prins"]
-  gem.extensions = "ext/mkrf_conf.rb"
+  gem.extensions = "ext/src/mkrf_conf.rb"
   gem.files += Dir['lib/**/*'] + Dir['ext/**/*']
+  gem.rubyforge_project = "nowarning"
+
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -42,6 +44,10 @@ end
 
 desc "Default builds and tests bio-affy"
 task :default => [:build, :test]
+
+desc "Build extension"
+task :build => [ ] do 
+end
 
 task :test => :spec
 

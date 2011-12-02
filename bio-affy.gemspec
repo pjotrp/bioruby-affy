@@ -5,15 +5,17 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bio-affy}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pjotr Prins"]
   s.date = %q{2011-12-02}
   s.default_executable = %q{biobio-affy}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{Affymetrix microarray file format parser
+  (CEL/CDF) for Ruby. FFI binding to Biolib port of R/Affyio by Benjamin Milo Bolstad}
   s.email = %q{pjotr.public01@thebird.nl}
   s.executables = ["biobio-affy"]
+  s.extensions = ["ext/src/mkrf_conf.rb"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -22,11 +24,52 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
     "bin/biobio-affy",
+    "bio-affy.gemspec",
+    "ext/DESCRIPTION",
+    "ext/HISTORY",
+    "ext/LICENSE",
+    "ext/NAMESPACE",
+    "ext/R/check.cdf.type.R",
+    "ext/R/read.cdffile.list.R",
+    "ext/R/read.celfile.R",
+    "ext/R/read.celfile.header.R",
+    "ext/R/read.probematrices.R",
+    "ext/README_BIOLIB",
+    "ext/aclocal.m4",
+    "ext/configure",
+    "ext/configure.in",
+    "ext/man/check.cdf.type.Rd",
+    "ext/man/read.cdffile.list.Rd",
+    "ext/man/read.celfile.Rd",
+    "ext/man/read.celfile.header.Rd",
+    "ext/man/read.celfile.probeintensity.matrices.Rd",
+    "ext/src/CMakeLists.txt",
+    "ext/src/Makevars.in",
+    "ext/src/Makevars.win",
+    "ext/src/biolib_affyio.c",
+    "ext/src/biolib_affyio.h",
+    "ext/src/fread_functions.c",
+    "ext/src/fread_functions.h",
+    "ext/src/mkrf_conf.rb",
+    "ext/src/read_abatch.c",
+    "ext/src/read_abatch.h",
+    "ext/src/read_bpmap.c",
+    "ext/src/read_cdf.h",
+    "ext/src/read_cdf_xda.c",
+    "ext/src/read_cdffile2.c",
+    "ext/src/read_celfile_generic.c",
+    "ext/src/read_celfile_generic.h",
+    "ext/src/read_clf.c",
+    "ext/src/read_generic.c",
+    "ext/src/read_generic.h",
+    "ext/src/read_pgf.c",
+    "ext/src/tags",
     "lib/bio-affy.rb",
     "spec/bio-affy_spec.rb",
     "spec/spec_helper.rb"
@@ -34,8 +77,9 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/pjotrp/bioruby-affy}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
+  s.rubyforge_project = %q{nowarning}
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{Parse Affymetrix CEL/CDF files}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
@@ -46,20 +90,23 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
-      s.add_development_dependency(%q<bio>, [">= 1.4.2"])
+      s.add_development_dependency(%q<ffi>, [">= 1.0.11"])
+      s.add_development_dependency(%q<mkrf>, [">= 0.2.3"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rcov>, [">= 0"])
-      s.add_dependency(%q<bio>, [">= 1.4.2"])
+      s.add_dependency(%q<ffi>, [">= 1.0.11"])
+      s.add_dependency(%q<mkrf>, [">= 0.2.3"])
     end
   else
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rcov>, [">= 0"])
-    s.add_dependency(%q<bio>, [">= 1.4.2"])
+    s.add_dependency(%q<ffi>, [">= 1.0.11"])
+    s.add_dependency(%q<mkrf>, [">= 0.2.3"])
   end
 end
 
