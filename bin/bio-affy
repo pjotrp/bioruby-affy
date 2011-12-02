@@ -6,7 +6,11 @@
 # Copyright:: 2011
 # License:: The Ruby License
 
- USAGE = "Describe biobio-affy"
+ROOT = File.dirname(__FILE__)
+$: << File.join([ROOT, "..","lib"])
+# ENV['LD_LIBRARY_PATH'] = File.join([ROOT, "..","lib"])
+
+USAGE = "bio-affy"
 
 if ARGV.size == 0
   print USAGE

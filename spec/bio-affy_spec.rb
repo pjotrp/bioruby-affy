@@ -1,5 +1,6 @@
 ROOT = File.dirname(__FILE__)
 $: << File.join([ROOT, "..","lib"])
+# ENV['LD_LIBRARY_PATH'] = File.join([ROOT, "..","lib"])
 
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'bio-affy'

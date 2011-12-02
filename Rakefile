@@ -2,6 +2,8 @@
 
 require 'rubygems'
 require 'bundler'
+require 'rake/clean'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -30,6 +32,12 @@ Jeweler::Tasks.new do |gem|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
+CLEAN.include('ext/src/Rakefile')
+CLEAN.include('ext/src/*.log')
+CLEAN.include('ext/src/*.o')
+CLEAN.include('ext/src/*.so')
+CLEAN.include('lib/bio/*.so')
+
 require 'rspec/core'
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
@@ -46,7 +54,7 @@ file "lib/libbio-affy.so" => Dir.glob("ext/src/*{.rb,.c}") do
      ruby "mkrf_conf.rb"
      sh "rake"
   end
-  cp "ext/src/libbio-affy.so", "lib/libbio-affy.so"
+  cp "ext/src/libaffyext.so", "lib/bio/libaffyext.so"
 end
 
 desc "Default builds and tests bio-affy"
