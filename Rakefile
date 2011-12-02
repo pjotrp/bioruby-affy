@@ -62,8 +62,7 @@ desc "Default builds and tests bio-affy"
 task :default => [:build, :test]
 
 desc "Build extension"
-task :build => [ "lib/libbio-affy.so" ] do 
-end
+task :build => [ "lib/libbio-affy.so" ]
 
 task :test => :spec
 
