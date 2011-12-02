@@ -17,10 +17,13 @@ Jeweler::Tasks.new do |gem|
   gem.name = "bio-affy"
   gem.homepage = "http://github.com/pjotrp/bioruby-affy"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Parse Affymetrix CEL/CDF files}
+  gem.description = %Q{Affymetrix microarray file format parser
+  (CEL/CDF) for Ruby. FFI binding to Biolib port of R/Affyio by Benjamin Milo Bolstad}
   gem.email = "pjotr.public01@thebird.nl"
   gem.authors = ["Pjotr Prins"]
+  gem.extensions = "ext/mkrf_conf.rb"
+  gem.files += Dir['lib/**/*'] + Dir['ext/**/*']
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -38,12 +41,12 @@ end
 
 task :default => :spec
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+# require 'rdoc/task'
+# Rake::RDocTask.new do |rdoc|
+#   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "bio-affy #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+#   rdoc.rdoc_dir = 'rdoc'
+#   rdoc.title = "bio-affy #{version}"
+#   rdoc.rdoc_files.include('README*')
+#   rdoc.rdoc_files.include('lib/**/*.rb')
+# end
