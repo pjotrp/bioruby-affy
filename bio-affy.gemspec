@@ -85,7 +85,11 @@ Gem::Specification.new do |s|
     "lib/bio/affyext.rb",
     "lib/bio/libaffyext.so",
     "spec/bio-affy_spec.rb",
-    "spec/spec_helper.rb"
+    "spec/spec_helper.rb",
+    "test/data/affy/GSM103328.CEL.gz",
+    "test/data/affy/GSM103329.CEL.gz",
+    "test/data/affy/GSM103330.CEL.gz",
+    "test/data/affy/MG_U74Av2.CDF.gz"
   ]
   s.homepage = "http://github.com/pjotrp/bioruby-affy"
   s.licenses = ["MIT"]
