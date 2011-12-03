@@ -64,7 +64,7 @@ task :default => [:build, :test]
 desc "Build extension"
 task :build => [ "lib/libbio-affy.so" ]
 
-task :test => :spec
+task :test => [ :build, :spec ]
 
 # require 'rdoc/task'
 # Rake::RDocTask.new do |rdoc|
