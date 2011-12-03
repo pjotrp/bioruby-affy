@@ -12,10 +12,9 @@ module Bio
       ffi_convention :stdcall
 
       attach_function :has_affyext, [ :int ], :int
-      # attach_function :open_cdffile, [ :string ], :pointer
-      def open_cdffile s
-      end
-
+      attach_function :BioLib_R_Init, [], :void
+      attach_function :BioLib_R_Close, [], :void
+      attach_function :open_cdffile, [ :string ], :pointer
     end
 
   end
