@@ -11,7 +11,10 @@ module Bio
       ffi_lib File.join(DIR,'libaffyext.so')  # <-- fix for OSX
       ffi_convention :stdcall
 
-      # attach_function :message_box, :MessageBoxA,[ :pointer, :string, :string, :uint ], :int
+      attach_function :has_affyext, [ :int ], :int
+      # attach_function :open_cdffile, [ :string ], :pointer
+      def open_cdffile s
+      end
 
     end
 

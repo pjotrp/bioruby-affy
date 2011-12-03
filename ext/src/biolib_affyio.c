@@ -12,6 +12,17 @@
 #include <R.h>  // For R's Free function only
 #include <biolib_affyio.h>
 
+/*
+
+Test for the shared libray binding. Returns the input value + 55 
+
+*/
+
+int has_affyext(int start)
+{
+  return start + 55;
+}
+
 /*!
  * Open a cel file using the Affyio library and return a pointer to a CELOBJECT,
  * which maintains state keeping track of the opened CEL data. The full array
@@ -399,5 +410,7 @@ double cel_mm(CELOBJECT *celobject, CDFOBJECT *cdfobject, unsigned int probeset,
   }
   return -1;
 }
+
+
 
 /*@}*/

@@ -54,6 +54,7 @@ typedef struct {
   short *outliers;
 } CELOBJECT;
 
+int has_affyext(int start);
 CELOBJECT *open_celfile(const char *celfilename);
 void close_celfile(CELOBJECT *object);
 unsigned long cel_num_cols(CELOBJECT *object);
@@ -121,6 +122,8 @@ CDFPROBE *cdf_pmprobe_info(CDFOBJECT *cdfobject, unsigned int probeset, unsigned
 CDFPROBE *cdf_mmprobe_info(CDFOBJECT *cdfobject, unsigned int probeset, unsigned int probe);
 double cel_pm(CELOBJECT *celobject, CDFOBJECT *cdfobject, unsigned int probeset, unsigned int probe);
 double cel_mm(CELOBJECT *celobject, CDFOBJECT *cdfobject, unsigned int probeset, unsigned int probe);
+
+int check_cdf_xda(const char *filename);
 
 #ifdef __cplusplus
 }

@@ -55,7 +55,7 @@ file "lib/libbio-affy.so" => Dir.glob("ext/src/*{.rb,.c}") do
      ruby "mkrf_conf.rb"
      sh "rake"
   end
-  # cp "ext/src/libaffyext.so", "lib/bio/libaffyext.so"
+  cp "ext/src/libaffyext.so", "lib/bio/libaffyext.so"
 end
 
 desc "Default builds and tests bio-affy"
