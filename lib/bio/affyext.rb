@@ -15,6 +15,7 @@ module Bio
       attach_function :BioLib_R_Init, [], :void
       attach_function :BioLib_R_Close, [], :void
       attach_function :open_cdffile, [ :string ], :pointer
+      attach_function :open_celfile, [ :string ], :pointer
     end
 
   end

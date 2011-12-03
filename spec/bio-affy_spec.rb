@@ -17,7 +17,9 @@ describe "BioAffy" do
     Bio::Affy::Ext.BioLib_R_Init()
     @cdf = Bio::Affy::Ext.open_cdffile(CDF)
   end
-  it "should open a CEL file"
+  it "should open a CEL file" do
+    @cel1 = Bio::Affy::Ext.open_celfile(CEL1)
+  end
   it "should find the probe values"
   it "should name the probes"
 end
