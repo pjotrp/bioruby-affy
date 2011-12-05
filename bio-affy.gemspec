@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "bio-affy"
-  s.version = "0.1.0.alpha.1"
+  s.version = "0.5.0"
 
-  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pjotr Prins"]
-  s.date = "2011-12-03"
+  s.date = "2011-12-05"
   s.description = "Affymetrix microarray file format parser\n  (CEL/CDF) for Ruby. FFI binding to Biolib port of R/Affyio by Benjamin Milo Bolstad"
   s.email = "pjotr.public01@thebird.nl"
   s.executables = ["bio-affy"]
@@ -51,9 +51,15 @@ Gem::Specification.new do |s|
     "ext/src/Makevars.in",
     "ext/src/Makevars.win",
     "ext/src/Rakefile",
+    "ext/src/biolib_R_map.c",
+    "ext/src/biolib_R_map.h",
+    "ext/src/biolib_R_map.o",
     "ext/src/biolib_affyio.c",
     "ext/src/biolib_affyio.h",
     "ext/src/biolib_affyio.o",
+    "ext/src/biolib_error.c",
+    "ext/src/biolib_error.h",
+    "ext/src/biolib_error.o",
     "ext/src/fread_functions.c",
     "ext/src/fread_functions.h",
     "ext/src/fread_functions.o",
@@ -86,9 +92,11 @@ Gem::Specification.new do |s|
     "lib/bio/libaffyext.so",
     "spec/bio-affy_spec.rb",
     "spec/spec_helper.rb",
+    "test/data/affy/ATH1-121501.CDF",
     "test/data/affy/GSM103328.CEL.gz",
     "test/data/affy/GSM103329.CEL.gz",
     "test/data/affy/GSM103330.CEL.gz",
+    "test/data/affy/MG_U74Av2.CDF",
     "test/data/affy/MG_U74Av2.CDF.gz"
   ]
   s.homepage = "http://github.com/pjotrp/bioruby-affy"
