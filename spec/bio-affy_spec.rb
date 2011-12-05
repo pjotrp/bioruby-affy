@@ -15,11 +15,18 @@ describe "BioAffy" do
   end
   it "should open a CDF file" do
     Bio::Affy::Ext.BioLib_R_Init()
-    @cdf = Bio::Affy::Ext.open_cdffile(CDF)
+    cdf = Bio::Affy::Ext.open_cdffile(CDF)
   end
   it "should open a CEL file" do
-    @cel1 = Bio::Affy::Ext.open_celfile(CEL1)
+    cel1 = Bio::Affy::Ext.open_celfile(CEL1)
   end
-  it "should find the probe values"
-  it "should name the probes"
+  it "should find the probe value for 15111" do
+    cel = Bio::Affy::Ext.open_celfile(CEL1)
+    probe_value = Bio::Affy::Ext.cel_intensity(cel,15110)
+    probe_value.should == 158.0
+  end
+  it "should name the probes for 15111" do
+    # probeset = Bio::Affy::Ext.cdf_probeset_info(@cdf,15110)
+    # probeset.name.should == "215197_at"
+  end
 end
