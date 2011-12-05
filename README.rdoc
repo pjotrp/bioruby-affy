@@ -1,6 +1,7 @@
 = bio-affy
 
-WARNING: This software is currently being developed! It may not be usable.
+WARNING: This software is currently being developed! For using the API
+see https://github.com/pjotrp/bioruby-affy/blob/master/spec/bio-affy_spec.rb
 
 Affymetrix microarray file format parser (CEL/CDF) for Ruby.
 
