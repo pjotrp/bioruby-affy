@@ -27,6 +27,7 @@ Jeweler::Tasks.new do |gem|
   gem.authors = ["Pjotr Prins"]
   gem.extensions = "ext/src/mkrf_conf.rb"
   gem.files += Dir['lib/**/*'] + Dir['ext/**/*']
+  gem.files.reject! { | n | n =~ /\.(o|so|gz|CDF|R|Rd|log)$/ }
   gem.rubyforge_project = "nowarning"
 
   # dependencies defined in Gemfile
