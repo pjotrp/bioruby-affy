@@ -1,3 +1,6 @@
+*.CDF
+*.CEL
+
 ext/src/Rakefile
 *.gem
 

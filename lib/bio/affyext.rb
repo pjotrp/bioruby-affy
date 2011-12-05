@@ -3,6 +3,15 @@ module Bio
 
   module Affy
 
+    class CDFProbeSet < FFI::Struct
+      layout :isQC,    :int,
+             :pm_num,  :int,
+             :mm_num,  :int,
+             :pm,      :pointer,
+             :mm,      :pointer,
+             :name,    [:uint8, 64] 
+    end
+
     module Ext
 
       extend FFI::Library
@@ -17,6 +26,8 @@ module Bio
       attach_function :open_cdffile, [ :string ], :pointer
       attach_function :open_celfile, [ :string ], :pointer
       attach_function :cel_intensity, [ :pointer, :int ], :double
+      attach_function :cel_num_intensities, [ :pointer ], :uint64
+      attach_function :cdf_num_probesets, [ :pointer ], :uint64
       attach_function :cdf_probeset_info, [ :pointer, :int ], :pointer
     end
 
