@@ -10,14 +10,14 @@ CDF = File.join(DATADIR,"MG_U74Av2.CDF")    # GPL81
 CDF2 = File.join(DATADIR,"ATH1-121501.CDF")
 CEL1 = File.join(DATADIR,"GSM103328.CEL.gz")
 
-describe "Bio::Affy::Ext" do
+describe "Bio::Affy::Ext1" do
  
   it "should find the shared library" do
     Bio::Affy::Ext.has_affyext(5).should == 60
   end
 end
 
-describe "BioAffy" do
+describe "Bio::Affy::Ext" do
   before :all do 
     # first start the R environment
     Bio::Affy::Ext.BioLib_R_Init()
@@ -58,7 +58,7 @@ describe "BioAffy" do
     num = Bio::Affy::Ext.cel_num_intensities(@cel)
     num.should == 409600 
   end
-  it "should find the cel intensity value" do
+  it "should find the CDF cel intensity value" do
     # In Bioconductor, after m <- ReadAffy()
     #
     probe_value = Bio::Affy::Ext.cel_intensity(@cel,1510)
@@ -92,19 +92,19 @@ describe "BioAffy" do
     
   end
 
-  it "should get the probeset information through Ext" do
+  it "should get the probeset information" do
     # In Bioconductor, after m <- ReadAffy()
     #
     # > length(featureNames(m))
     # [1] 12488  (12501 in bio-affy - we add the 13 controls)
-    # > featureNames(m)[1]  # first probeset name
-    # [1] "100001_at"
-    # > featureNames(m)[1511]  
-    # [1] "101949_at"
-    # > featureNames(m)[1512]  
-    # [1] "101950_at"
-    # > featureNames(m)[1513]  
-    # [1] "101952_at"
+    #
+    # Note also the feature numbering is different in the Bioconductor set:
+    # > as.vector(geneNames(m))[0:5]
+    # [1] "100001_at" "100002_at" "100003_at" "100004_at" "100005_at"
+    # > as.vector(geneNames(m))[1509:1512]
+    # [1] "101947_at" "101948_at" "101949_at" "101950_at"
+    # > as.vector(geneNames(m))[11657]
+    # [1] "98910_at"  <- this is what we test at index 1510.
     probeset_ptr = Bio::Affy::Ext.cdf_probeset_info(@cdf,1510)
     probeset = Bio::Affy::CDFProbeSet.new(probeset_ptr)
     probeset[:isQC].should == 0
@@ -127,4 +127,11 @@ describe "BioAffy" do
       Bio::Affy::Ext.cel_pm(@cel,@cdf,1510,i).should == e
     end
   end
+  # convenience methods
+  it "should find the probeset for 98910_at" do
+    probeset_index = Bio::Affy::Find.probeset_by_feature_name(@cdf,"98910_at")
+    probeset_index.should == 1510
+  end
 end
+
+
