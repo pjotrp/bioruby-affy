@@ -58,21 +58,47 @@ describe "BioAffy" do
     num = Bio::Affy::Ext.cel_num_intensities(@cel)
     num.should == 409600 
   end
-  it "should find the probe intensity values" do
+  it "should find the cel intensity value" do
     # In Bioconductor, after m <- ReadAffy()
     #
     probe_value = Bio::Affy::Ext.cel_intensity(@cel,1510)
     probe_value.should == 10850.8
   end
+  it "should get the probeset indexes from the CDF" do
+    cdf_cols = 640 # (cdf.cols)
+    # R/Bioconductor:
+    #
+    # > as.vector(geneNames(m))[11657]
+    # [1] "98910_at"
+    # 
+    # cat(indexProbes(m, which="pm", genenames="98910_at")[[1]],sep=",")
+    # 344297,177348,21247,246762,200777,166097,382469,397538,66238,344987,11503,253234,206965,103391,54927,333474
+    pm0 = [ 344297,177348,21247,246762,200777,166097,382469,397538,66238,344987,11503,253234,206965,103391,54927,333474 ]
+    pm0.each_with_index do | index, i |
+      # call with probeset, probenum
+      probe_ptr = Bio::Affy::Ext.cdf_pmprobe_info(@cdf,1510,i)
+      probe = Bio::Affy::CDFProbeInfo.new(probe_ptr)
+      # p [probe.x, probe.y]
+      # p [ index, probe.x, probe.y, probe.x + probe.y*@cdf.cols + 1]
+      (probe.x + probe.y*cdf_cols + 1).should == index
+    end
+
+    
+  end
+
   it "should get the probeset information through Ext" do
     # In Bioconductor, after m <- ReadAffy()
     #
-    #   geneNames(m)[1]     "1007_s_at"
-    #   geneNames(m)[1]     "1007_s_at"
-    #   geneNames(m)[1511]  "215738_at"
-    #   geneNames(m)[15111] "215738_at"
-    #   geneNames(m)[21232] "221872_at"
-    # memptr = MemoryPointer.new :pointer
+    # > length(featureNames(m))
+    # [1] 12488  (12501 in bio-affy - we add the 13 controls)
+    # > featureNames(m)[1]  # first probeset name
+    # [1] "100001_at"
+    # > featureNames(m)[1511]  
+    # [1] "101949_at"
+    # > featureNames(m)[1512]  
+    # [1] "101950_at"
+    # > featureNames(m)[1513]  
+    # [1] "101952_at"
     probeset_ptr = Bio::Affy::Ext.cdf_probeset_info(@cdf,1510)
     probeset = Bio::Affy::CDFProbeSet.new(probeset_ptr)
     probeset[:isQC].should == 0
