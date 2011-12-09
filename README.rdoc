@@ -7,18 +7,23 @@ you weary of R's slowness and memory consumption? Do you want Ruby's
 convenience? Try creating a biogem, and use bio-affy's foreign
 function interface (FFI) strategy for linking against R's C libraries.
 
-WARNING: This software is currently being developed! For using the API
-see https://github.com/pjotrp/bioruby-affy/blob/master/spec/bio-affy_spec.rb
+For an example of the API see https://github.com/pjotrp/bioruby-affy/blob/master/spec/bio-affy_spec.rb
 
 == Introduction
 
 This is a port of the Biolib-1.0 Affy parser, which in turn is an
 adaptation of Ben Bolstad's Affyio library for R/Bioconductor.
 
+You can query CDF files for feature names of probesets, the number of probesets and 
+probe types, and the indices of probes on the array. 
+
+You can query CEL files for raw expression values of PM probes and MM probes.
+
 This implementation allows processing one or more microarrays at a
 time. It is not necessary to load all microarrays in RAM.
 
-To use the command line tool you do not need to know Ruby.
+To use the command line tool you do not need to know Ruby (note, the command line
+interface is not ready).
 
 == Install
 
