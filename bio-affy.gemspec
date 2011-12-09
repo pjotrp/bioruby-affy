@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "bio-affy"
-  s.version = "0.5.0"
+  s.version = "0.5.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pjotr Prins"]
-  s.date = "2011-12-05"
+  s.date = "2011-12-09"
   s.description = "Affymetrix microarray file format parser\n  (CEL/CDF) for Ruby. FFI binding to Biolib port of R/Affyio by Benjamin Milo Bolstad"
   s.email = "pjotr.public01@thebird.nl"
   s.executables = ["bio-affy"]
