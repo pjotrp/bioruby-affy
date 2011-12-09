@@ -117,7 +117,7 @@ describe "BioAffy" do
 
     pms = [ 665,655.8,591.3,117.5,697.8,1220.8,2763.8,2765.3,2989.3,875.8,625,229,261.3,109.8,801.3,258.3,433.3,186.8,227.5,662 ]
     pms.each_with_index do | e, i |
-      # p Biolib::Affyio.cel_pm(@microarrays[1],@cdf,1-1,i)
+      # p Biolib::Affyio.cel_pm(@microarrays[1],@cdf,1510,i)
       Bio::Affy::Ext.cel_pm(@cel,@cdf,1-1,i).should == e
     end
   end
