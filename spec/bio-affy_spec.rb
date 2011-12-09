@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 require 'bio-affy'
 
 DATADIR = File.join([ROOT,'test','data','affy'])
-CDF = File.join(DATADIR,"MG_U74Av2.CDF")
+CDF = File.join(DATADIR,"MG_U74Av2.CDF")    # GPL81
 CDF2 = File.join(DATADIR,"ATH1-121501.CDF")
 CEL1 = File.join(DATADIR,"GSM103328.CEL.gz")
 
@@ -39,6 +39,7 @@ describe "BioAffy" do
     probeset[:isQC].should == 0
     probeset[:pm_num].should == 16
     probeset[:mm_num].should == 16
+    # 98910_at	144	P	0.009985 (normalized on GEO)
     probeset[:name].to_ptr.read_string.should == "98910_at"
   end
 end
