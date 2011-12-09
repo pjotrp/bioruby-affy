@@ -73,6 +73,12 @@ describe "BioAffy" do
     # 
     # cat(indexProbes(m, which="pm", genenames="98910_at")[[1]],sep=",")
     # 344297,177348,21247,246762,200777,166097,382469,397538,66238,344987,11503,253234,206965,103391,54927,333474
+    #
+    # or
+    #
+    # pmindex(m,"98910_at")
+    #
+
     pm0 = [ 344297,177348,21247,246762,200777,166097,382469,397538,66238,344987,11503,253234,206965,103391,54927,333474 ]
     pm0.each_with_index do | index, i |
       # call with probeset, probenum
@@ -111,14 +117,14 @@ describe "BioAffy" do
   end
   it "should fetch the PM (perfect match) values" do
     # Test PM values; as in R's pm(m)[1,1:8]
-    #  mypmindex <- pmindex(m,"AFFX-BioB-5_at")
-    #  intensity(m)[mypmindex$`AFFX-BioB-5_at`,2]
+    #  mypmindex <- pmindex(m,"98910_at")
+    #  cat(intensity(m)[mypmindex$`98910_at`],sep=",")
     # Bioconductor 1.9 - even with test.cdf ought to be
 
-    pms = [ 665,655.8,591.3,117.5,697.8,1220.8,2763.8,2765.3,2989.3,875.8,625,229,261.3,109.8,801.3,258.3,433.3,186.8,227.5,662 ]
+    pms = [ 120,768,1046,1220.3,345.3,171.3,138,171.3,189,343.3,605.3,1064.5,4429.3,854.3,2675,886.3]
     pms.each_with_index do | e, i |
       # p Biolib::Affyio.cel_pm(@microarrays[1],@cdf,1510,i)
-      Bio::Affy::Ext.cel_pm(@cel,@cdf,1-1,i).should == e
+      Bio::Affy::Ext.cel_pm(@cel,@cdf,1510,i).should == e
     end
   end
 end
