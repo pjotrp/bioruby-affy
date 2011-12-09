@@ -10,6 +10,10 @@ module Bio
              :pm,      :pointer,
              :mm,      :pointer,
              :name,    [:uint8, 64] 
+
+      def name 
+        self[:name].to_ptr.read_string 
+      end
     end
 
     module Ext

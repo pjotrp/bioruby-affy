@@ -2,13 +2,18 @@
 
 Affymetrix microarray file format parser (CEL/CDF) for Ruby.
 
+Are you tired waiting for R/Bioconductor to download and install? Are
+you weary of R's slowness and memory consumption? Do you want Ruby's
+convenience? Try creating a biogem, and use bio-affy's foreign
+function interface (FFI) strategy for linking against R's C libraries.
+
 WARNING: This software is currently being developed! For using the API
 see https://github.com/pjotrp/bioruby-affy/blob/master/spec/bio-affy_spec.rb
 
 == Introduction
 
 This is a port of the Biolib-1.0 Affy parser, which in turn is an
-adaptation of Ben Bolstad's work for R/Bioconductor.
+adaptation of Ben Bolstad's Affyio library for R/Bioconductor.
 
 This implementation allows processing one or more microarrays at a
 time. It is not necessary to load all microarrays in RAM.
