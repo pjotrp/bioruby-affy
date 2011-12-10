@@ -61,8 +61,8 @@ describe "Bio::Affy::Ext" do
   it "should find the CDF cel intensity value" do
     # In Bioconductor, after m <- ReadAffy()
     #
-    probe_value = Bio::Affy::Ext.cel_intensity(@cel,1510)
-    probe_value.should == 10850.8
+    intensity = Bio::Affy::Ext.cel_intensity(@cel,1510)
+    intensity.should == 10850.8
   end
   it "should get the probeset indexes from the CDF" do
     cdf_cols = 640 # (cdf.cols)
