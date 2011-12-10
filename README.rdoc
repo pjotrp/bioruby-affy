@@ -7,8 +7,6 @@ you weary of R's slowness and memory consumption? Do you want Ruby's
 convenience? Try creating a biogem, and use bio-affy's foreign
 function interface (FFI) strategy for linking against R's C libraries.
 
-For an example of the API see https://github.com/pjotrp/bioruby-affy/blob/master/spec/bio-affy_spec.rb
-
 == Introduction
 
 This is a port of the Biolib-1.0 Affy parser, which in turn is an
@@ -54,6 +52,58 @@ This module was written with
     Using rspec-expectations (2.7.0) 
     Using rspec-mocks (2.7.0) 
     Using rspec (2.7.0) 
+
+== API (Ruby library)
+
+    require 'bio-affy'
+
+Start the R environment, so the embedded Affyio library can use R's functions directly
+
+    Bio::Affy::Ext.BioLib_R_Init()
+
+Open the mouse CDF file, and query it
+
+    @cdf = Bio::Affy::Ext.open_cdffile("MG_U74Av2.CDF")
+    num_probesets = Bio::Affy::Ext.cdf_num_probesets(@cdf)
+
+Open an Affymetrix mouse CEL microrray file (gzipped)
+
+    @cel = Bio::Affy::Ext.open_celfile("GSM103328.CEL.gz")
+    num = Bio::Affy::Ext.cel_num_intensities(@cel)
+
+We'll query the CDF for probeset 1510 (feature name 98910_at)
+
+    probeset_index = Bio::Affy::Find.probeset_by_feature_name(@cdf,"98910_at")
+    p probeset_index # == 1510
+    probeset_ptr = Bio::Affy::Ext.cdf_probeset_info(@cdf,1510)
+    probeset = Bio::Affy::CDFProbeSet.new(probeset_ptr)
+    p probeset[:isQC] # == 0
+    p probeset[:pm_num] # == 16
+    p probeset[:mm_num] # == 16
+    p probeset[:name].to_ptr.read_string
+    p probeset.name # == "98910_at"
+    intensity = Bio::Affy::Ext.cel_intensity(@cel,1510)  # == 10850.8
+
+get the first perfect match (PM) probe 
+
+    probes_ptr = Bio::Affy::Ext.cdf_pmprobe_info(@cdf,1510,0)
+    probe = Bio::Affy::CDFProbeInfo.new(probe_ptr)
+
+using the probe we can calculate the PM index
+
+    pm_probe_index1 = probe.x + probe.y*cdf_cols + 1
+
+Now, the interesting bit. We want the PM expression values of this probeset
+
+    (0..pm_num).each do | i |
+       print Bio::Affy::Ext.cel_pm(@cel,@cdf,1510,i)
+    end
+
+prints the 16 values for the perfect match probes
+
+    120,768,1046,1220.3,345.3,171.3,138,171.3,189,343.3,605.3,1064.5,4429.3,854.3,2675,886.3
+
+For more on the API see https://github.com/pjotrp/bioruby-affy/blob/master/spec/bio-affy_spec.rb
 
 == Copyright
 
