@@ -127,11 +127,24 @@ describe "Bio::Affy::Ext" do
       Bio::Affy::Ext.cel_pm(@cel,@cdf,1510,i).should == e
     end
   end
+  it "should fetch the MM (mismatch) values"
+  it "should clean up memory of the CDF and CEL buffers"
   # convenience methods
   it "should find the probeset for 98910_at" do
     probeset_index = Bio::Affy::Find.probeset_by_feature_name(@cdf,"98910_at")
     probeset_index.should == 1510
   end
+
+  # normalization
+  it "should normalize the probeset data to expression values using RMA/qnorm"
+  # In R/Bioconductor we would use 
+  #
+  #   library(affy)
+  #   m <- ReadAffy()
+  #   rma = rma(m, background=F)
+  #   write.exprs(rma,'test.txt')
+  #
+
 end
 
 
