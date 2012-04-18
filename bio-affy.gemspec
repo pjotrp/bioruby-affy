@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pjotr Prins"]
-  s.date = "2011-12-09"
+  s.date = "2012-04-18"
   s.description = "Affymetrix microarray file format parser\n  (CEL/CDF) for Ruby. FFI binding to Biolib port of R/Affyio by Benjamin Milo Bolstad"
   s.email = "pjotr.public01@thebird.nl"
   s.executables = ["bio-affy"]
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".rspec",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -80,24 +81,24 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, ["~> 2.7.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.12"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, [">= 1.1.3"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_development_dependency(%q<ffi>, [">= 1.0.11"])
       s.add_development_dependency(%q<mkrf>, [">= 0.2.3"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.7.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.12"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<bundler>, [">= 1.1.3"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<ffi>, [">= 1.0.11"])
       s.add_dependency(%q<mkrf>, [">= 0.2.3"])
     end
   else
     s.add_dependency(%q<rspec>, ["~> 2.7.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.12"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<bundler>, [">= 1.1.3"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<ffi>, [">= 1.0.11"])
     s.add_dependency(%q<mkrf>, [">= 0.2.3"])
   end
