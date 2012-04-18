@@ -29,6 +29,11 @@ Requirements: to install this software you need an installation of R and Ruby 1.
 
   apt-get install r-base-core ruby1.9
 
+Make sure Rlib is built as a shared library, e.g.
+
+  ls -l /usr/lib/R/lib /usr/lib64/R/lib
+    -rw-r--r-- 1 root root 2957216 Oct 31 11:59 libR.so
+
 After installing ruby 1.9, you can use rubygems
 
   gem install bio-affy
