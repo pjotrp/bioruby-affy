@@ -57,6 +57,7 @@ file "lib/libbio-affy.so" => Dir.glob("ext/src/*{.rb,.c}") do
      sh "rake"
   end
   cp "ext/src/libaffyext.so", "lib/bio/libaffyext.so"
+  print `ldd lib/bio/libaffyext.so`
 end
 
 desc "Default builds and tests bio-affy"
