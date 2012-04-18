@@ -1,4 +1,7 @@
 language: ruby
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install r-base-dev
 rvm:
   - 1.9.2
   - 1.9.3
