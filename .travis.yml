@@ -1,9 +1,9 @@
 language: ruby
 before_install:
   - sudo apt-get update
-  - sudo apt-get install r-base-dev
+  - sudo apt-get install r-base r-base-dev
 rvm:
-  - 1.9.2
+#   - 1.9.2
   - 1.9.3
 #  - jruby-19mode # JRuby in 1.9 mode
 #  - rbx-19mode
